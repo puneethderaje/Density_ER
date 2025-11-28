@@ -1,0 +1,74 @@
+
+Lmod is automatically replacing "gentoo/2023" with "nixpkgs/16.09".
+
+-------------------------------------------------------------------------------
+There are messages associated with the following module(s):
+-------------------------------------------------------------------------------
+
+nixpkgs/16.09:
+   These standard environment modules are deprecated and now contain
+   software packages that have security issues. We recommend not using
+   these, and instead use our more recent StdEnv modules. Use at your own
+   risk.
+
+-------------------------------------------------------------------------------
+Inactive Modules:
+  1) aocl-blas       3) flexiblas       5) libfabric/1.18.0     7) ucc/1.2.0
+  2) aocl-lapack     4) hwloc/2.9.1     6) pmix/4.2.4           8) ucx/1.14.1
+
+The following have been reloaded with a version change:
+  1) gcc/12.3 => gcc/9.1.0               3) openmpi/4.1.5 => openmpi/4.0.1
+  2) gcccore/.12.3 => gcccore/.9.1.0
+
+
+The following have been reloaded with a version change:
+  1) gcc/9.1.0 => gcc/7.3.0               3) openmpi/4.0.1 => openmpi/3.1.4
+  2) gcccore/.9.1.0 => gcccore/.7.3.0
+
+/var/spool/slurm/slurmd/job556753/slurm_script: line 13: /home/pderaje/myenv/bin/activate: No such file or directory
+  File "DensityDependence_Simulations.py", line 132
+    print(r,b,N0, flush = True)
+                        ^
+SyntaxError: invalid syntax
+srun: error: tri0578: task 0: Exited with exit code 1
+srun: Terminating StepId=556753.0
+
+scontrol show job 556753
+JobId=556753 JobName=DensityDependence_Simulations.sh
+   UserId=pderaje(3114641) GroupId=pderaje(3114641) MCS_label=N/A
+   Priority=411898 Nice=0 Account=def-mmosmond QOS=normal
+   JobState=COMPLETING Reason=NonZeroExitCode Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=1:0
+   RunTime=00:00:07 TimeLimit=05:00:00 TimeMin=N/A
+   SubmitTime=2025-11-25T16:48:35 EligibleTime=2025-11-25T16:48:35
+   AccrueTime=2025-11-25T16:48:35
+   StartTime=2025-11-26T00:17:32 EndTime=2025-11-26T00:17:39 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2025-11-26T00:17:32 Scheduler=Backfill
+   Partition=compute AllocNode:Sid=tri-login03:2712800
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=tri0578
+   BatchHost=tri0578
+   NumNodes=1 NumCPUs=192 NumTasks=1 CPUs/Task=40 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=40,mem=767000M,node=1,billing=40
+   AllocTRES=cpu=192,mem=767000M,node=1,billing=192
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=40 MinMemoryNode=767000M MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=NO Contiguous=0 Licenses=(null) Network=(null)
+   Command=/scratch/pderaje/Density_ER/DensityDependence_Simulations.sh
+   WorkDir=/scratch/pderaje/Density_ER
+   Comment=/opt/slurm/bin/sbatch --export=NONE --get-user-env=L DensityDependence_Simulations.sh 
+   StdErr=/scratch/pderaje/Density_ER/slurm-556753.out
+   StdIn=/dev/null
+   StdOut=/scratch/pderaje/Density_ER/slurm-556753.out
+   TresPerTask=cpu=40
+   
+
+sacct -j 556753
+JobID           JobName    Account    Elapsed  MaxVMSize     MaxRSS  SystemCPU    UserCPU ExitCode 
+------------ ---------- ---------- ---------- ---------- ---------- ---------- ---------- -------- 
+556753       DensityDe+ def-mmosm+   00:00:07                        00:00.145  00:00.528      1:0 
+556753.batch      batch def-mmosm+   00:00:07          0     14172K  00:00.126  00:00.517      1:0 
+556753.exte+     extern def-mmosm+   00:00:07                         00:00:00   00:00:00      0:0 
+556753.0         python def-mmosm+   00:00:00          0      6032K  00:00.019  00:00.011      1:0 
+
