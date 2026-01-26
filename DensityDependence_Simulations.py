@@ -108,7 +108,10 @@ def Hermaphroditic(r,lw,lm,M,b=0,N0=10**4,mu=10**(-4),sgv=0, ID_self=0, ps=0, ti
         [Ext, Xseries]
     return Ext
 
-NoR = 10**(4)
+
+
+
+NoR = 10**4
 M = 10**4
 lw = 0.95
 lm = 1.5
